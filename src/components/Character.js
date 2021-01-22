@@ -4,15 +4,26 @@ import styled from 'styled-components';
 
 const Character = (props) => {
 
-    const { name, setName } = props;
+    const { charData } = props;
 
     const Char = styled.div`
-        background-color: grey;
+        color: #50C9CE;
+        text-shadow: .4px .4px grey;
+        margin: 10px 0px;
+        padding: 16px 10px;
+        background-color: #2E382E;
+        p {
+            color: lime;
+            margin: 3px 0px;
+        }
     `;
 
     return(
         <Char>
-            <h2>It's {name}</h2>
+            <img src={charData.image} alt={charData.name} />
+            <h2>{charData.name}</h2>
+            <p>Species: {charData.species}</p>
+            <p>Status: {charData.status}</p>
         </Char>
     )
 }

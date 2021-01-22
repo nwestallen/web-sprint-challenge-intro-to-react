@@ -50,10 +50,22 @@ const App = () => {
     .catch(err => console.log(err));
   },[]);
 
+  const CharContainer = styled.div`
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100vh;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-flow: column nowrap;
+  `;
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {data.map(char => <Character name={char.name} />)}
+      <CharContainer>
+        {data.map(char => <Character charData={char} />)}
+      </CharContainer>
     </div>
   );
 }
