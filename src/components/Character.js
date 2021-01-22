@@ -12,7 +12,7 @@ const Character = (props) => {
 
     return(
         <Char>
-            <h2>It's RICK</h2>
+            <h2>It's {name}</h2>
         </Char>
     )
 }
