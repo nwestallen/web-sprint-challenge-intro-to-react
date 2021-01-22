@@ -23,6 +23,7 @@ const Character = (props) => {
             <img src={charData.image} alt={charData.name} />
             <h2>{charData.name}</h2>
             <p>Species: {charData.species}</p>
+            <p>Gender: {charData.gender}</p>
             <p>Status: {charData.status}</p>
         </Char>
     )

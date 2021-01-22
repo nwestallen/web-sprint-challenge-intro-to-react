@@ -57,7 +57,8 @@ const App = () => {
     margin: auto;
     width: fit-content;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
   `;
 
   return (
