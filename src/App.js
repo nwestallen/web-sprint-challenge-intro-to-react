@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import styled from 'styled-components'
 import Character from './components/Character'
+import PageSelector from './components/PageSelector';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -39,16 +40,25 @@ const App = () => {
   ]
 
   const [data, setData] = useState(dummmyData);
+  const [page, setPage] = useState(1);
 
   useEffect( () => {
     axios
-    .get(`https://rickandmortyapi.com/api/character`)
+    .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
     .then(res => {
       setData(res.data.results);
       console.log(res.data.results);
     })
     .catch(err => console.log(err));
-  },[]);
+  },[page]);
+
+  const nextPage = () => {
+    if(page < 34){setPage(page + 1)};
+  }
+
+  const prevPage = () => {
+    if(page > 1) {setPage(page - 1)};
+  }
 
   const CharContainer = styled.div`
     overflow-y: scroll;
@@ -64,6 +74,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      <PageSelector nextPage={nextPage} prevPage={prevPage} page={page} />
       <CharContainer>
         {data.map(char => <Character charData={char} />)}
       </CharContainer>
